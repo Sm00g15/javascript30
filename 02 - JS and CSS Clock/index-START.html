@@ -7,7 +7,9 @@
 <body>
 
     
-    <div style="text-align: center" class="time"></div>
+    <div style="text-align: center">
+      <h1 class="time"></h1>
+    </div>
 
     <div class="clock">
       <div class="clock-face">
@@ -84,14 +86,15 @@
     const secondHand = document.querySelector('.second-hand');
     const minuteHand = document.querySelector('.min-hand');
     const hourHand = document.querySelector('.hour-hand');
-    if(seconds < 10 ) {
-      seconds = '0' + seconds;
-    }
     secondHand.style.transform = `rotate(${secondsDegrees}deg)`;
     minuteHand.style.transform = `rotate(${minutesDegrees}deg)`;
     hourHand.style.transform = `rotate(${hourDegrees}deg)`;
     const time = document.querySelector('.time');
-    time.textContent = `${hours} ${minutes} ${seconds}`
+    if(seconds < 10) {
+      time.textContent = `${hours} ${minutes} 0${seconds}`
+    } else {
+      time.textContent = `${hours} ${minutes} ${seconds}`
+    }
   }
   setInterval(setDate, 1000);
   </script>
